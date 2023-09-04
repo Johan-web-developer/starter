@@ -8,7 +8,7 @@ server.on('request', (req,res) => {
         res.end(data);
     }); */
     //Solution 2: Streams
-    const raedable = fs.createReadStream('test-file.txt');
+/*     const raedable = fs.createReadStream('test-file.txt');
     raedable.on('data', chunk =>{
          res.write(chunk);
     });
@@ -19,7 +19,11 @@ server.on('request', (req,res) => {
         console.log(err);
         res.statusCode = 404;
         res.end('File not found!!')
-    })
+    }) */
+
+    //Solution 3 
+    const readable = fs.createReadStream("test-file.txt");
+    readable.pipe(res);
 });
 
 
